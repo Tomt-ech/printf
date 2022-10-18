@@ -3,12 +3,9 @@
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
- * _printf - produces output according to a format
- * @format: format string containing the characters and the specifiers
- * Description: this function will call the get_print() function that will
- * determine which printing function to call depending on the conversion
- * specifiers contained into fmt
- * Return: the number of characters printed
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars.
  */
 
 int _printf(const char *format, ...)
@@ -38,9 +35,8 @@ int _printf(const char *format, ...)
 			print_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &i);
 			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
-			++1;
+			++i;
 			printed = handle_print(format, &i, list, buffer,
 					flags, width, precision, size);
 			if (printed == -1)
@@ -55,11 +51,10 @@ int _printf(const char *format, ...)
 
 	return (printed_chars);
 }
-
 /**
- * print_buffer - print the content of the buffer if it exist
- * @buffer: array of chars
- * @buff_ind: index of which to add next char, represent the length
+ * print_buffer - Prints the contents of the buffer if it exist
+ * @buffer: Array of chars
+ * @buff_ind: Index at which to add next char, represents the length.
  */
 
 void print_buffer(char buffer[], int *buff_ind)
